@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Created by dtgoitia
+
+# TODO: add license here
+
+# Run this script as root after your first boot with Arch Linux
+
+echo "I'm alive!"
