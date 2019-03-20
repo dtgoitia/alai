@@ -20,7 +20,7 @@ chmod 777 path_to_script
 ### Connect via SSH
 
 If you are in VirtualBox, configure it to expose the guest port 22 at host's port 2222:
-1. Open Settings > Network > Adapter 1 > Advanced > Port Fowarding
+1. Open Settings > Network > Adapter 1 > Advanced > Port Forwarding
 2. Create a new rule:
     ```text
     Name        | Protocol | Host IP | Host Port | Guest IP | Guest Port
