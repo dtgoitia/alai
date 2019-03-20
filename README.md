@@ -59,3 +59,33 @@ If you are in VirtualBox, configure it to expose the guest port 22 at host's por
     passwd dtg
     ```
 10. Log out (`Ctrl` + `D`) and log in as the user.
+
+## Troubleshooting
+
+### SSH
+
+When the SSH signature changes, you might get an eror as such:
+```bash
+$ ssh -p 2222 root@127.0.0.1
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:J84wZShoQS/w1fdMy1xP2cw2KW1W+keKuU/TAgwEucd.
+Please contact your system administrator.
+Add correct host key in /c/Users/your-host-hostname/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /c/Users/your-host-hostname/.ssh/known_hosts:6
+ECDSA host key for [127.0.0.1]:2222 has changed and you have requested strict checking.
+Host key verification failed.
+```
+
+**Solution**: remove the fingerprint associated with the guest address you are trying to connect to, which is shown in the error message: `[127.0.0.1]:222`.
+
+To do so:
+1. Edit `~/.ssh/known_hosts`.
+2. Find and remove the line starting with `[127.0.0.1]:2222`. 
+3. Try to connect again.
+4. The SSH client should prompt you to save the new fingerprint.

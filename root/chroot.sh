@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST=x
+HOST=myhost
 USERNAME=dtg
 HOME_DIR="/home/${USERNAME}"
 SWAP_SIZE=2G
@@ -16,8 +16,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # run these following essential service by default
 systemctl enable sshd.service
-systemctl enable dhcpcd.service
-systemctl enable ntpd.service # TODO: replace with NetworkManager
+systemctl enable NetworkManager.service
 
 echo "$HOST" > /etc/hostname
 

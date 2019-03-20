@@ -16,8 +16,7 @@ mount "$PARTITION" /mnt
 pacman -Syy
 
 # Install the base packages
-pacstrap /mnt base base-devel grub openssh sudo ntp
-# TODO: replace 'ntp' above for NetworkManager
+pacstrap /mnt base base-devel grub openssh sudo networkmanager
 
 # CONFIGURE THE SYSTEM
 # Generate an fstab file
