@@ -1,7 +1,13 @@
 #!/bin/bash
 
+# Run this script passing a single argument: the host's port where the
+# virtual machine SSH port is open.
+
+# Example:
+# $ ./run.sh 2222
+
 DISK="sda"
-PORT="2222"
+PORT="$1"
 HOST="127.0.0.1"
 
 echo DISK="$DISK", PORT="$PORT", HOST="$HOST"

@@ -50,7 +50,7 @@ If you are in VirtualBox, configure it to expose the guest port 22 at host's por
 7. If everything went OK, you should be now inside the VM shell. Press `Ctrl+D` to exit.
 8. From the host:
     ```bash
-    ./run.sh
+    ./run.sh 2222
     ```
 
 9. After rebooting, in the guest, login as root and set the password of the just created user:
