@@ -64,6 +64,8 @@ If you are in VirtualBox, configure it to expose the guest port 22 at host's por
 
 ### SSH
 
+#### Middle man attack error
+
 When the SSH signature changes, you might get an eror as such:
 ```bash
 $ ssh -p 2222 root@127.0.0.1
@@ -89,3 +91,10 @@ To do so:
 2. Find and remove the line starting with `[127.0.0.1]:2222`. 
 3. Try to connect again.
 4. The SSH client should prompt you to save the new fingerprint.
+
+#### Log in as user
+
+```bash
+ssh -p 2222 myusername@127.0.0.1
+```
+And type `myusername`'s password.
