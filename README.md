@@ -60,6 +60,38 @@ If you are in VirtualBox, configure it to expose the guest port 22 at host's por
     ```
 10. Log out (`Ctrl` + `D`) and log in as the user.
 
+### Setup XMonad
+
+1. Install required packages:
+    ```bash
+    sudo pacman -Syu --noconfirm xmonad xmonad-contrib xorg-server xorg-xinit rxvt-unicode
+    ```
+2. Set-up _X_ server-client required files:
+    ```bash
+    echo 'xmonad' > ~/.xinitrc
+    echo 'xmonad' > ~/.xsession
+    ```
+3. Create _xmonad_ configuration file at `~/.xmonad/xmonad.hs`:
+    ```hs
+    import XMonad
+
+    main = xmonad def
+        { terminal = "urxvt"
+        }
+    ```
+4. Create `~/.Xresources` file to customize _rxvt-unicode_ terminal:
+    ```
+    URxvt*termName:          screen-256color
+    URxvt*loginShell:        true
+    URxvt*scrollWithBuffer:  false
+    URxvt*background:        Black
+    URxvt*foreground:        White
+    URxvt*scrollBar:         false
+    ```
+    Ensure to run `xrdb ~/.Xresources` when you change the configuration, and then reopen  _rxvt-unicode_.
+
+[Incredibly detailed `Xresources` settings](https://www.askapache.com/linux/rxvt-xresources/)
+
 ## Troubleshooting
 
 ### SSH

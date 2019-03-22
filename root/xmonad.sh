@@ -3,7 +3,7 @@
 # Install required depencies
 sudo pacman -Syu --noconfirm xmonad xmonad-contrib xorg-server xorg-xinit rxvt-unicode
 
-# Create XMonad files to start session
+# Create xmonad files to start session
 echo 'xmonad' > ~/.xinitrc
 echo 'xmonad' > ~/.xsession
 
@@ -16,3 +16,7 @@ main = xmonad def
     }' > ~/.xmonad/xmonad.hs
 
 xmonad --recompile
+
+# Create Xresource file
+echo '!do not scroll'
+xrdb ~/.Xresources
