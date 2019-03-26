@@ -60,6 +60,12 @@ If you are in VirtualBox, configure it to expose the guest port 22 at host's por
     ```
 10. Log out (`Ctrl` + `D`) and log in as the user.
 
+### Setup WiFi
+
+Installing the `base` group of packages installs `netctl` to handle the network connections. I will use the `networkmanager` package, which should be installed by the installation scripts. There is no need to uninstall `netctl` as it's very small (95KB).
+
+The script will also automatically disable `netctl` and enable `NetworkManager` services. From then on, you can communicate with the `NetworkManager` service via the `nmcli` CLI client. This client is enough to manage and connect to WiFi networks.
+
 ### Setup XMonad
 
 1. Install required packages:
