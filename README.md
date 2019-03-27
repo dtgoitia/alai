@@ -71,7 +71,7 @@ The script will also automatically disable `netctl` and enable `NetworkManager` 
 Copy all the dotfiles from the host to the guest:
 
 ```bash
-scp -P 2222 -rp ./dotfiles dtg@127.0.0.1:~/
+./install_xmonad.sh 2222
 ```
 
 ### Setup XMonad
