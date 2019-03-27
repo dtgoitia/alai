@@ -66,6 +66,14 @@ Installing the `base` group of packages installs `netctl` to handle the network 
 
 The script will also automatically disable `netctl` and enable `NetworkManager` services. From then on, you can communicate with the `NetworkManager` service via the `nmcli` CLI client. This client is enough to manage and connect to WiFi networks.
 
+### Setup X resources
+
+Copy all the dotfiles from the host to the guest:
+
+```bash
+scp -P 2222 -rp ./dotfiles dtg@127.0.0.1:~/
+```
+
 ### Setup XMonad
 
 1. Install required packages:
@@ -78,7 +86,7 @@ The script will also automatically disable `netctl` and enable `NetworkManager` 
     echo 'xmonad' > ~/.xsession
     ```
 3. Create _xmonad_ configuration file at `~/.xmonad/xmonad.hs`:
-    ```hs
+    ```haskell
     import XMonad
 
     main = xmonad def
@@ -98,41 +106,32 @@ The script will also automatically disable `netctl` and enable `NetworkManager` 
 
 [Incredibly detailed `Xresources` settings](https://www.askapache.com/linux/rxvt-xresources/)
 
+5. Install _xmobar_ package: `xmobar`.
+6. Add _xmobar_ configuration to `~/.xmobarrc` (see [example](https://wiki.archlinux.org/index.php/Xmobar#Configuration)).
+7. Configure _xmonad_ to start _xmobar_ on start:
+    ```haskell
+    mport XMonad
+    import XMonad.Hooks.DynamicLog
+
+    main = xmonad =<< xmobar defaultConfig
+    {   modMask = mod4Mask
+        { terminal = "urxvt"
+        }
+    }
+    ```
+
 ## Troubleshooting
 
-### SSH
+### Xresources
 
-#### Middle man attack error
+#### Xresources are not being loaded
 
-When the SSH signature changes, you might get an eror as such:
-```bash
-$ ssh -p 2222 root@127.0.0.1
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-It is also possible that a host key has just been changed.
-The fingerprint for the ECDSA key sent by the remote host is
-SHA256:J84wZShoQS/w1fdMy1xP2cw2KW1W+keKuU/TAgwEucd.
-Please contact your system administrator.
-Add correct host key in /c/Users/your-host-hostname/.ssh/known_hosts to get rid of this message.
-Offending ECDSA key in /c/Users/your-host-hostname/.ssh/known_hosts:6
-ECDSA host key for [127.0.0.1]:2222 has changed and you have requested strict checking.
-Host key verification failed.
+When you start _X_ using a custom `.xinitrc`, you need to specify the _X_ config files to be loaded. Otherwise you'll be presented with a plain default settings (white and ugly).
+
+**Solution**: run `xrdb ~/.Xresources`. The new settings should be picked up when you open a new terminal.
+In order to load the custom _X_ configurations on start, add the instruction to your `.xinitrc` file:
+```text
+xrdb ~/.Xresources
+
+xmonad
 ```
-
-**Solution**: remove the fingerprint associated with the guest address you are trying to connect to, which is shown in the error message: `[127.0.0.1]:222`.
-
-To do so:
-1. Edit `~/.ssh/known_hosts`.
-2. Find and remove the line starting with `[127.0.0.1]:2222`. 
-3. Try to connect again.
-4. The SSH client should prompt you to save the new fingerprint.
-
-#### Log in as user
-
-```bash
-ssh -p 2222 myusername@127.0.0.1
-```
-And type `myusername`'s password.
