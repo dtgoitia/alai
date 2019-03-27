@@ -2,6 +2,8 @@
 - [ ] Familiarize with `.xinitrc`:
   - What does `exec` do:
     - `exec` replaces the current process with the one specified: https://forums.fedoraforum.org/showthread.php?175576-exec-command-in-xinitrc
+  - `.xinitrc` should have executable persmissions `chmod +x .xinitrc` (https://forums.tomshardware.com/threads/xmonad-doesnt-start-with-startx-command.2096753/post-14224554)
+- [ ] `.xinitrc` vs `.xsession`, which one should I use?
 - [ ] Set up xmobar:
   - https://beginners-guide-to-xmonad.readthedocs.io/configure_xmobar.html
 - [ ] Set a decent theme for the terminal: http://dotshare.it/dots/8352/
