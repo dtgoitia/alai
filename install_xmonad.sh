@@ -9,3 +9,5 @@ scp -P "$PORT" -rp ./dotfiles/. $USER@$HOST:~/
 
 # sudo pacman -Rs xmonad xmonad-contrib xmobar
 # sudo pacman -Syu xmonad xmonad-contrib
+# sudo pacman -Syu fish
+# sudo pacman -Syu xmobar
