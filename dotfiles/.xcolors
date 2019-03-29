@@ -1,0 +1,37 @@
+! special
+#define foreground      #ffffff
+#define foreground_bold #d3d3d3
+#define cursor          #ffffff
+#define background      #2f343f
+ 
+! black
+#define color0 #2e0904
+#define color8  #757575
+ 
+! red
+#define color1  #a66550
+#define color9  #a66550
+ 
+! green
+#define color2  #d46950
+#define color10 #d46950
+ 
+! yellow
+#define color3  #b7876c
+#define color11 #b7876c
+ 
+! blue
+#define color4  #BF616A
+#define color12 #BF616A
+ 
+! magenta
+#define color5  #b77d83
+#define color13 #b77d83
+ 
+! cyan
+#define color6  #e1a792
+#define color14 #e1a792
+ 
+! white
+#define color7  #efd2c3
+#define color15 #efd2c3

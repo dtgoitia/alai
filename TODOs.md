@@ -14,3 +14,15 @@
 - [ ] Login screen:
   - https://arcolinuxd.com/22-all-in-one-arch-linux-installation-bios-with-xmonad-aio/
   - https://arcolinuxd.com/how-to-get-rid-of-the-dynamic-user-in-lightdm-login-screen/
+- [ ] Setup vim colours
+- [ ] Setup `dmenu`
+- [ ] Set up a right theme:
+  - How to use the colors:
+    - Guide: https://www.reddit.com/r/unixporn/comments/8giij5/guide_defining_program_colors_through_xresources/
+    - https://unix.stackexchange.com/questions/224552/how-do-i-use-a-terms-colors-file
+  - http://dotshare.it/dots/8352/
+  - http://dotshare.it/category/wms/xmonad/
+- [ ] Setup vim theme:
+  - Setup vim-plug: https://github.com/junegunn/vim-plug/wiki/tutorial
+  - Palenight: https://github.com/drewtempelmeyer/palenight.vim
+  - Enable italics (see README)

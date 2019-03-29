@@ -11,3 +11,27 @@ scp -P "$PORT" -rp ./dotfiles/. $USER@$HOST:~/
 # sudo pacman -Syu xmonad xmonad-contrib
 # sudo pacman -Syu fish
 # sudo pacman -Syu xmobar
+
+# Install Git
+# sudo pacman -Syu git
+
+# Install utilities like pactree
+# sudo pacman -Syu pacman-contrib
+
+# Install yay
+# git clone https://aur.archlinux.org/yay.git
+# cd yay
+# makepkg -si
+# yay -Syu yay-bin
+# Overwrite the existing git installation with yay-managed yay installation
+
+# Install dmenu
+# yay -Syu dmenu2
+
+# Install nnn explorer
+# yay -Syu nnn
+
+# Install atop
+# yay -Syu atop
+
+

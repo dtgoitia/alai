@@ -120,6 +120,12 @@ Copy all the dotfiles from the host to the guest:
     }
     ```
 
+## Usage
+
+- Open new terminal: `Alt`+`Shift`+`Enter`
+- Exit Xmonad: `Alt`+`Shift`+`Q`
+- Go to workspace 1, 2...: `Alt`+`1`, `Alt`+`2`, ...
+
 ## Troubleshooting
 
 ### Xresources
