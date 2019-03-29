@@ -6,7 +6,13 @@ import XMonad.Util.Run(spawnPipe)
 -- updated with the settings specified between the curly brackets.
 myConfig = def
     { terminal = "urxvt"
+    , workspaces = myWorkspaces
     }
+
+
+------------------------------------------------------------------------
+-- Workspaces
+myWorkspaces = ["1", "2"]
 
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults set up above
