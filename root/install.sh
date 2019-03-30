@@ -1,7 +1,17 @@
 #!/bin/bash
 
 DISK="/dev/$1"
-PARTITION="${DISK}1"
+if [ "$1" = "sda" ]; then
+  # regular hard drive
+  PARTITION="${DISK}1"
+elif [ "$1" = "mmcblk0" ]; then
+  # MMC memory
+  PARTITION="${DISK}p1"
+else
+  # unknown case, stop execution
+  echo "Sorry, I can only support 'sda' or 'mmcblk0' disk types :)"
+  exit 1
+fi
 
 echo DISK="$DISK", PARTITION="$PARTITION"
 

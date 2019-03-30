@@ -1,23 +1,20 @@
 # Arch Linux Automatic Installation
 
-1. Increase your `cow_space`: `mount -o remount,size=2G /run/archiso/cowspace` (TODO: can this 2GB be reduced?)
-2. Get list of packages and install Git: `pacman -Sy git`
-3. Get your installation script:
+Steps to install Arch Linux via SSH in another machine (guest) automatically:
+
+## TL;DR
+
+1. Start the live installation.
+2. Ensure you have internet connection in your guest (run `wifi-menu` and follow the instructions).
+3. Connect via SSH from your host to your guest (details [here](#connect-via-ssh)).
+4. In your host, clone the installation scripts and execute them:
     ```bash
     git clone git://github.com/dtgoitia/alai
     cd alai
-    ./run
+    ./run.sh
     ```
 
-## Development
-
-Ensure to give permissions to your BASH script before committing the file:
-
-```bash
-chmod 777 path_to_script
-```
-
-### Connect via SSH
+## Connect via SSH
 
 If you are in VirtualBox, configure it to expose the guest port 22 at host's port 2222:
 1. Open Settings > Network > Adapter 1 > Advanced > Port Forwarding
@@ -60,13 +57,13 @@ If you are in VirtualBox, configure it to expose the guest port 22 at host's por
     ```
 10. Log out (`Ctrl` + `D`) and log in as the user.
 
-### Setup WiFi
+## Setup WiFi
 
 Installing the `base` group of packages installs `netctl` to handle the network connections. I will use the `networkmanager` package, which should be installed by the installation scripts. There is no need to uninstall `netctl` as it's very small (95KB).
 
 The script will also automatically disable `netctl` and enable `NetworkManager` services. From then on, you can communicate with the `NetworkManager` service via the `nmcli` CLI client. This client is enough to manage and connect to WiFi networks.
 
-### Setup X resources
+## Setup X resources
 
 Copy all the dotfiles from the host to the guest:
 
@@ -74,7 +71,7 @@ Copy all the dotfiles from the host to the guest:
 ./install_xmonad.sh 2222
 ```
 
-### Setup XMonad
+## Setup XMonad
 
 1. Install required packages:
     ```bash
@@ -120,7 +117,7 @@ Copy all the dotfiles from the host to the guest:
     }
     ```
 
-## Usage
+## XMonad usage
 
 - Open new terminal: `Alt`+`Shift`+`Enter`
 - Exit Xmonad: `Alt`+`Shift`+`Q`
@@ -141,3 +138,11 @@ xrdb ~/.Xresources
 
 xmonad
 ```
+
+## Development
+
+Bear in mind:
+
+  - Scripts needs to have `777` permissions: `chmod 777 path_to_script`.
+  - Configuration files ending in `CRLF` can cause problems in Linux (_XMonad_, etc.).
+

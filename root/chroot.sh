@@ -1,7 +1,7 @@
 #!/bin/bash
 
-HOST=myhost
-USERNAME=dtg
+HOST="mini"
+USERNAME="dtg"
 HOME_DIR="/home/${USERNAME}"
 SWAP_SIZE=2G
 
