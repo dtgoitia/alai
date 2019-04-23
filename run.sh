@@ -5,7 +5,7 @@
 # DISK="sda"
 DISK="mmcblk0"
 PORT="22"
-HOST="192.168.0.46"
+HOST="192.168.0.27"
 
 echo DISK="$DISK", PORT="$PORT", HOST="$HOST"
 

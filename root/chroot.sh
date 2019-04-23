@@ -6,12 +6,17 @@ HOME_DIR="/home/${USERNAME}"
 SWAP_SIZE=2G
 
 echo DISK="$1", HOST="$HOST", USERNAME="$USERNAME", HOME_DIR="$HOME_DIR"
+# TODO add to the script arguments the UEFI mount
+# path (`/efi`, remember you are inside /mnt already)
 
 # grub as a bootloader
-grub-install --target=i386-pc --recheck "$1"
+# grub-install --target=x86_64-efi --efi-directory=/${???} --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
 
 # This makes the grub timeout 0, it's faster than 5 :)
 sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
+
+# generate GRUB config file
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # run these following essential service by default
@@ -34,7 +39,7 @@ cp /authorized_keys /root/.ssh
 chown -R "$USERNAME:$USERNAME" "$HOME_DIR/.ssh"
 
 # adjust your timezone here
-ln -f -s /usr/share/zoneinfo/Europe/London /etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 hwclock --systohc
 
 # adjust your name servers here if you don't want to use google
