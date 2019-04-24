@@ -2,10 +2,12 @@
 
 # Edit disk, the port and the host IP before running the script
 
-# DISK="sda"
-DISK="mmcblk0"
-PORT="22"
-HOST="192.168.0.27"
+DISK="sda"
+PORT="2222"
+HOST="127.0.0.1"
+# DISK="mmcblk0"
+# PORT="22"
+# HOST="192.168.0.27"
 
 echo DISK="$DISK", PORT="$PORT", HOST="$HOST"
 

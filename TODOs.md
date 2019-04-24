@@ -26,3 +26,9 @@
   - Setup vim-plug: https://github.com/junegunn/vim-plug/wiki/tutorial
   - Palenight: https://github.com/drewtempelmeyer/palenight.vim
   - Enable italics (see README)
+- [ ] Speed up system booting with GRUB:
+  - [ ] Edit `/etc/default/grub`:
+    - https://askubuntu.com/questions/148095/how-do-i-set-the-grub-timeout-and-the-grub-default-boot-entry
+    - https://www.howtogeek.com/196655/how-to-configure-the-grub2-boot-loaders-settings/
+  - [ ] Make the changes take effect: `grub-mkconfig -o /boot/grub/grub.cfg`.
+    - This will move the changes from `/etc/default/grub` to `/boot/grub/grub.cgf`.
