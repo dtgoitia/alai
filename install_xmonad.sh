@@ -4,13 +4,14 @@ PORT="$1"
 USER="dtg"
 HOST="127.0.0.1"
 
-scp -P "$PORT" -rp ./dotfiles/. $USER@$HOST:~/
+scp -P "$PORT" -rp ./dotfiles/.* $USER@$HOST:~/
 # scp -P 2222 dtg@127.0.0.1:/usr/share/X11/xorg.conf.d ./xorg.conf.d
 
-# sudo pacman -Rs xmonad xmonad-contrib xmobar
-# sudo pacman -Syu xmonad xmonad-contrib
-# sudo pacman -Syu fish
-# sudo pacman -Syu xmobar
+sudo pacman -Syu fish
+
+# Install `xorg` group packages and drivers (note: drivers might vary, check Wiki Xserver)
+sudo pacman -Syu xorg xorg-xinit xf86-video-intel
+sudo pacman -Syu xmonad xmonad-contrib rxvt-unicode xmobar ttf-bitstream-vera
 
 # Install Git
 # sudo pacman -Syu git
