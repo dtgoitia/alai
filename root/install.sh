@@ -25,13 +25,14 @@ parted -s "$DISK" mklabel gpt
 # Create a 273MB ESP (EFI System Partition)
 echo "Creating a FAT32 partition of 273MB for EFI"
 parted -s -a optimal "$DISK" mkpart primary fat32 0% 273MB
+# TODO: set UEFI doesn't have a `boot` flag, it's done in a different way (see Dropbox notes 2018-11-30-installing-arch-linux.md)
+# parted -s "$DISK" set 1 esp on
 # TODO: create a swap partition
 # Create a partition for the rest of the OS with the remaining space
 echo "Creating a EXT4 partition with the remaining space for the OS"
 parted -s -a optimal "$DISK" mkpart primary ext4 273MB 100%
 
 # Format the partitions
-# UEFI doesn't have a `boot` flag, it's done in a different way (see Dropbox notes 2018-11-30-installing-arch-linux.md)
 # ESP requires a FAT32 filesystem
 mkfs.fat -F32 "$ESP"
 mkfs.ext4 "$PARTITION"
@@ -46,10 +47,10 @@ mkfs.ext4 "$PARTITION"
 # in chroot.sh when dealing with GRUB
 mkdir -p /mnt/efi/EFI/arch
 mount "$ESP" /mnt/efi
-cp -a /mnt/boot/vmlinuz-linux /efi/EFI/arch/
-cp -a /mnt/boot/initramfs-linux.img /mnt/efi/EFI/arch/
-cp -a /mnt/boot/initramfs-linux-fallback.img /mnt/efi/EFI/arch/
-mount "$PARTITION" /mnt
+# cp -a /mnt/boot/vmlinuz-linux /mnt/efi/EFI/arch/
+# cp -a /mnt/boot/initramfs-linux.img /mnt/efi/EFI/arch/
+# cp -a /mnt/boot/initramfs-linux-fallback.img /mnt/efi/EFI/arch/
+# mount "$PARTITION" /mnt
 # Mount SWAP partition
 # swapon "$SWAP"
 
